@@ -35,5 +35,6 @@ class SnakeHead(Sprite):
             self.rect.centery -= 1
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.rect.centery += 1
+
     def draw_sh(self):
         pygame.draw.rect(self.screen, self.color, self.rect)

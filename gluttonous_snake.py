@@ -4,6 +4,7 @@
 import sys
 import pygame
 
+from food import Food
 from settings import Settings
 from snake_head import SnakeHead
 import game_functions as gs
@@ -17,6 +18,7 @@ def run_game():
 
     #创建一个蛇头
     snake_head = SnakeHead(gs_settings, screen)
+    food = Food(screen, gs_settings)
 
     while True:
         #监视键盘和鼠标事件
@@ -25,6 +27,6 @@ def run_game():
         snake_head.update()
 
         #每次循环时都重绘制屏幕
-        gs.update_screen(gs_settings, screen, snake_head)
+        gs.update_screen(gs_settings, screen, snake_head, food)
 
 run_game()

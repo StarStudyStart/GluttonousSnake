@@ -13,3 +13,8 @@ class Settings():
         self.sh_width = 10
         self.sh_height = 10
         self.sh_color = 69, 185, 46
+
+        #食物设置
+        self.food_radius  = 10
+        self.food_center = (200, 100)
+        self.food_color = 0, 0, 0

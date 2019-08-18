@@ -34,9 +34,10 @@ def check_events(sh):
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, sh)
             
-def update_screen(gs_settings, screen, snake_head):
+def update_screen(gs_settings, screen, snake_head, food):
     """更新屏幕上的图像，并切换到新的屏幕"""
     screen.fill(gs_settings.bg_color)
     snake_head.draw_sh()
+    food.draw_food()
     # 让最近绘制的屏幕可见
     pygame.display.flip()
