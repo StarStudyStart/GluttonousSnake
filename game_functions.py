@@ -2,6 +2,8 @@ import sys
 import pygame
 
 from snake_body import SnakeBody
+from snake_head import SnakeHead
+
 
 def check_keydown_events(event, sh):
     """响应按键"""
@@ -29,23 +31,30 @@ def check_collision(gs_settings, screen, snake_head, food, snake_bodys):
     """更新蛇的身体"""
     if  pygame.sprite.collide_rect(snake_head, food):
         food.update_center()
-        new_body = SnakeBody(gs_settings, screen,snake_head)
+        new_head = SnakeHead(gs_settings, screen)
         if snake_head.moving_direction == "right" :
-            snake_head.centerx += self.gs_settings.sh_speed_factor
+            new_head.centerx = snake_head.centerx + 10
+            new_head.centery = snake_head.centery
+            new_head.moving_direction = "right"
+            print(new_head.rect)
         elif snake_head.moving_direction == "left" :
-            snake_head.centerx -= self.gs_settings.sh_speed_factor
+            new_head.centerx = snake_head.centerx - 10
+            new_head.centery = snake_head.centery
+            new_head.moving_direction = "left"
         elif snake_head.moving_direction == "up" :
-            snake_head.centery -= self.gs_settings.sh_speed_factor
+            new_head.centerx = snake_head.centerx
+            new_head.centery = snake_head.centery - 10
+            new_head.moving_direction = "up"
         elif snake_head.moving_direction == "down":
-            snake_head.centery += self.gs_settings.sh_speed_factor
-        new_body.rect
-        snake_bodys.add(new_body)
-        print("hit")
-
-def update_screen(gs_settings, screen, snake_head, food):
+            new_head.centerx = snake_head.centerx
+            new_head.centery = snake_head.centery + 10
+            new_head.moving_direction = "down"
+        snake_bodys.insert(0, new_head)
+def update_screen(gs_settings, screen, snake_bodys, food):
     """更新屏幕上的图像，并切换到新的屏幕"""
     screen.fill(gs_settings.bg_color)
-    snake_head.draw_sh()
+    for snake in snake_bodys:
+        snake.draw_sh()
     food.draw_food()
     # 让最近绘制的屏幕可见
     pygame.display.flip()

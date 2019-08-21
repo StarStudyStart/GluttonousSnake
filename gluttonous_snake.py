@@ -22,14 +22,15 @@ def run_game():
     food = Food(screen, gs_settings)
 
     #创建蛇的身体
-    snake_bodys = Group()
+    snake_bodys = [snake_head]
 
     while True:
         #监视键盘和鼠标事件
         gf.check_events(snake_head)
-        snake_head.update()
+        for snake in snake_bodys:
+            snake.update()
         gf.check_collision(gs_settings, screen, snake_head, food, snake_bodys)
         #每次循环时都重绘制屏幕
-        gf.update_screen(gs_settings, screen, snake_head, food)
+        gf.update_screen(gs_settings, screen, snake_bodys, food)
 
 run_game()
