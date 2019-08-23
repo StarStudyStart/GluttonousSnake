@@ -20,7 +20,7 @@ class SnakeHead(Sprite):
         self.rect.centerx = self.screen_rect.centerx
         self.rect.centery = self.screen_rect.centery
 
-        # self.color = Settings.random_rgb()
+        self.inner_color = Settings.random_rgb()
         self.color = gs_settings.sh_color
 
         #移动标志
@@ -28,3 +28,4 @@ class SnakeHead(Sprite):
 
     def draw_sh(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
+        # pygame.draw.rect(self.screen, self.color, self.rect)
