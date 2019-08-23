@@ -10,7 +10,6 @@ class Settings():
         self.bg_color = (230, 230, 230)
 
         #蛇头设置
-        self.sh_speed_factor = 0.1
         self.sh_width = 10
         self.sh_height = 10
         self.sh_color = 69, 185, 46
@@ -22,9 +21,19 @@ class Settings():
         #身体设置
         self.body_color = (0, 0, 0)
 
+        #屏幕刷新速率
+        self.snake_speed = 10
+
     @staticmethod
     def random_xy():
         """"获得随机的X，值Y"""
         x = randint(0, 400)
         y = randint(0, 600)
-        return (x, y)
+        return x, y
+
+    @staticmethod
+    def random_rgb():
+        r = randint(0, 255)
+        g = randint(0, 255)
+        b = randint(0, 255)
+        return r, g, b

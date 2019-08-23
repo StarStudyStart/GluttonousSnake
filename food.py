@@ -7,9 +7,6 @@ class Food(Sprite):
     """一个对食物管理的类"""
     def __init__(self, screen, gs_settings):
         self.screen = screen
-        self.flag_draw = False
-        # self.rect = pygame.Rect(0, 0, gs_settings.sh_width,
-        #                         gs_settings.sh_height)
 
         self.center = Settings.random_xy()
         self.color = gs_settings.food_color
